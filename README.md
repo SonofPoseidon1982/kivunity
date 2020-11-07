@@ -31,7 +31,7 @@ Add the following acitivites to your Android manifest file:
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:hardwareAccelerated="false" />
 
-In your main.py, use the folowing methods;
+In your main.py, use the following methods;
 
      Import Kivunity
 
