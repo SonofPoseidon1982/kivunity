@@ -5,6 +5,18 @@ Copy KivUnity.Py into the source folder. Follow UnityADS integration instruction
 
 Add Unity-ads.aar to your /libs folder
 
+Update your buildozer.spec file to include the following:
+ 
+     android.permissions = INTERNET,ACCESS_NETWORK_STATE
+
+Un-comment this or place the aar file in a location of your choice
+
+     # (list) Android AAR archives to add (currently works only with sdl2_gradle
+     # bootstrap)
+     android.add_aars = ./libs/*.aar
+
+Don't forget to include jnius in your list of requirements
+ 
 Add the following acitivites to your Android manifest file:
 
         <activity
