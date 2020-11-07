@@ -30,12 +30,19 @@ Add the following acitivites to your Android manifest file:
             android:hardwareAccelerated="false" />
 
 In your main.py, use the folowing methods;
-Import Kivunity
+
+     Import Kivunity
+
 Instantiate the class Unity_handler early on; 
-   unity_ads = kivunity.Unity_handler(app_id)
+
+     unity_ads = kivunity.Unity_handler(app_id)
+
 Early on, initialize Unity ads; 
-   unity_ads.init_unity()
+
+    unity_ads.init_unity()
+
 When ready to show the ad; 
-   unity_ads.show_ad(inter_id) 
+
+    unity_ads.show_ad(inter_id) 
 
 
