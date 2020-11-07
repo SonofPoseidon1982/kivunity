@@ -5,14 +5,12 @@ import sys
 import os 
 from android.runnable import run_on_ui_thread
 from jnius import autoclass, PythonJavaClass, java_method, cast
-from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
 
 import logging
 
 testmode = True
-#inter_id = "12839"
-#app_id = "3786901"
+#inter_id = "######"
+#app_id = "######"
 inter_id = 0
 app_id = 0
 
