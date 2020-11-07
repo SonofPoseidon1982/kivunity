@@ -1,11 +1,13 @@
 This is a very new project simply knocked up to demonstrate a problem I am experiencing in integrating Unity ADS with pygame. 
+At the moment I have only got interstitial ads working for the purposes of my own integration.
 It currently works with Kivy but leads to black screen death with Pygame.
 Copy KivUnity.Py into the source folder. Follow UnityADS integration instructions,e.g.
 
 Add Unity-ads.aar to your /libs folder
 
 Add the following acitivites to your Android manifest file:
-     <activity
+
+        <activity
             android:name="com.unity3d.services.ads.adunit.AdUnitActivity"
             android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
