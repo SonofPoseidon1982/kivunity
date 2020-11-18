@@ -11,8 +11,9 @@ import logging
 testmode = True
 #inter_id = "######"
 #app_id = "######"
-inter_id = 0
+ad_id = 0
 app_id = 0
+ad_type=="interstitial"
 
 PythonActivity = autoclass("org.kivy.android.PythonActivity")
 Unity_ads_listener = autoclass("com.unity3d.ads.IUnityAdsListener")
@@ -39,18 +40,24 @@ class Unity_handler():
      Unity_ads.initialize(self.c_activity,app_id,testmode)
      #Unity_ads.initialize(PythonActivity.mActivity,app_id,testmode)
        
+    def check_ad_status(self):
+      if ad_type=="interstitial":
+         return app_fin
+      elif ad_type=="reward":
+         # work in progress
+         return reward_viewed     
  
    def show_ad(self, id_num):
-     global inter_id   
+     global ad_id   
      #show interstial ads
-     inter_id = id_num
+     ad_id = id_num
      logging.warning("\n\n self.c_activity="+str(self.c_activity)+"\n\n")
      logging.warning("\n\n app_id="+str(app_id)+"\n\n")
      logging.warning("\n\n new_ad_listener="+str(self.new_ad_listener)+"\n\n")
 
-     if Unity_ads.isReady(inter_id):
+     if Unity_ads.isReady(ad_id):
           try:
-            Unity_ads.show(self.c_activity, inter_id)
+            Unity_ads.show(self.c_activity, ad_id)
             
           except:
             logging.warning("Unity ads not ready and thus has not been loaded") 
@@ -61,17 +68,17 @@ class UnityAdsListener(PythonJavaClass):
     __javacontext__= 'app'
 
     @java_method('(Ljava/lang/String;)V')
-    def onUnityAdsReady(self,inter_id):
-       logging.warning("\n\n ADS are ready! "+ str(inter_id) + " \n\n")
+    def onUnityAdsReady(self,ad_id):
+       logging.warning("\n\n ADS are ready! "+ str(ad_id) + " \n\n")
        #pass        
 
     @java_method('(Ljava/lang/String;)V')   
-    def onUnityAdsStart(self,inter_id):
+    def onUnityAdsStart(self,ad_id):
        #pass
-       logging.warning("\n\n ADS are starting! " + self(inter_id) + "\n\n")
+       logging.warning("\n\n ADS are starting! " + self(ad_id) + "\n\n")
 
     @java_method('(Ljava/lang/String;Lcom/unity3d/ads/UnityAds$FinishState;)V')
-    def onUnityAdsFinish(self,inter_id,finish_state):
+    def onUnityAdsFinish(self,ad_id,finish_state):
        #pass
        logging.warning("\n\n ADS are FINISHED! "+str(finish_state) + " \n\n")
        #appl_id = u_h.app_id2                                                     
