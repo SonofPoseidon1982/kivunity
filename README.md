@@ -1,5 +1,5 @@
 This project started off as a means of demonstrating a problem I am experiencing in integrating Unity ADS with pygame. 
-However, I decided to develop it further to explore the potential of implement unity ads in both Kivy and pygame.
+However, I decided to develop it further to explore the potential of implementing unity ads in both Kivy and pygame.
 
 GENERAL GUIDELINES:
 
