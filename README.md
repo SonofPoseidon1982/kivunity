@@ -75,3 +75,63 @@ In Kivy the above implementation is straightforward. However, in pygame there ar
 the method in which pygame draws graphics to the surface in terms of frames per second. Hence, the main approach
 is to paused the fps temporarily until the ad is viewed and then resume the fps.
 
+In UnityAdsListener interface (in kivunity.py) 'ad_shown=True' is returned when the ad has finished slowing:
+
+      @java_method('(Ljava/lang/String;Lcom/unity3d/ads/UnityAds$FinishState;)V')
+       def onUnityAdsFinish(self,inter_id,finish_state):
+         global ad_shown
+         logging.warning("\n\n ADS are FINISHED! "+str(finish_state) + " \n\n")
+         #appl_id = u_h.app_id2                                                     
+         ad_shown = True 
+    
+The following method returns True when the ad is shown
+ 
+         def check_ad_status(self):
+            return ad_shown
+
+In your main pygame you may have something like this implemented for pausing the app and rendering graphics
+per second:
+
+       tmp_sleep=False
+       pygame.display.init()
+       fps=27
+       py_display =pygame.display.set_mode((0, 0),pygame.FULLSCREEN)     
+         
+       
+       while game_loop==True:
+         while g_pause = False: 
+             #main methods
+        
+         pygame.display.flip()
+
+         
+         py_clock.tick(fps)
+
+If you try to use g_pause=True, it will stop display your game graphics but the fps will continue to update
+which will conflict with the full screen ad being shown. So the following methods are added to ensure the
+ad is shown without surface conflicts:
+
+       tmp_sleep=False
+       pygame.display.init()
+       fps=27
+       py_display =pygame.display.set_mode((0, 0),pygame.FULLSCREEN)     
+         
+       
+       while game_loop==True:
+         if unity_show==True:
+              tmp_sleep = False
+              unity_ads.show_ad(ad_id)             
+              while tmp_sleep==False:
+                 tmp_sleep = unity_ads.check_ad_status()
+                 time.sleep(1)
+              self.g_sleep=False
+              py_display =pygame.display.set_mode((0, 0),pygame.FULLSCREEN)     
+              print("\n\n Pygame window back into focus \n\n ")
+
+         while self.g_pause = False: 
+             #main methods
+        
+         pygame.display.flip()
+
+         
+         py_clock.tick(fps)
