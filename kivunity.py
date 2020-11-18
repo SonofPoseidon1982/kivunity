@@ -8,7 +8,6 @@ from jnius import autoclass, PythonJavaClass, java_method, cast
 
 import logging
 
-testmode = True
 #inter_id = "######"
 #app_id = "######"
 ad_id = 0
@@ -30,14 +29,15 @@ class Unity_handler():
    def __init__(self, app_id_2):
      self.a_id = app_id_2
    
-   def init_unity(self):
+   def init_unity(self,t_mode):
      global app_id
      app_id = self.a_id  
+     self.testmode = t_mode
      self.new_ad_listener = UnityAdsListener()
      #Unity_ads.addListener(new_ad_listener)
      Unity_ads.setListener(self.new_ad_listener)
      self.c_activity = cast('android.app.Activity',PythonActivity.mActivity)
-     Unity_ads.initialize(self.c_activity,app_id,testmode)
+     Unity_ads.initialize(self.c_activity,app_id,self.testmode)
      #Unity_ads.initialize(PythonActivity.mActivity,app_id,testmode)
        
     def check_ad_status(self):
