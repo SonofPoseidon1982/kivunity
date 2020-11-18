@@ -67,3 +67,11 @@ For interstitials, when ready to show the ad anywhere in your code simply add;
 REWARD ADS:
 
 ** In progress **
+
+
+PYGAME IMPLEMENTATION:
+
+In Kivy the above implementation is straightforward. However, in pygame there are addition complications due to
+the method in which pygame draws graphics to the surface in terms of frames per second. Hence, the main approach
+is to paused the fps temporarily until the ad is viewed and then resume the fps.
+
