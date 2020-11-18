@@ -1,23 +1,23 @@
-This is a very new project simply knocked up to demonstrate a problem I am experiencing in integrating Unity ADS with pygame. 
-At the moment I have only got interstitial ads working for the purposes of my own integration.
-It currently works with Kivy but leads to black screen death with Pygame.
-Copy KivUnity.Py into the source folder. Follow UnityADS integration instructions,e.g.
+This project started off as a means of demonstrating a problem I am experiencing in integrating Unity ADS with pygame. 
+However, I decided to develop it further to explore the potential of implement unity ads in both Kivy and pygame.
 
-Add Unity-ads.aar to your /libs folder
+GENERAL GUIDELINES:
 
-Update your buildozer.spec file to include the following:
+1. Add Unity-ads.aar to your /libs folder
+
+2. Update your buildozer.spec file to include the following:
  
      android.permissions = INTERNET,ACCESS_NETWORK_STATE
 
-Un-comment this or place the aar file in a location of your choice
+3. Un-comment this or place the aar file in a location of your choice
 
-     # (list) Android AAR archives to add (currently works only with sdl2_gradle
-     # bootstrap)
-     android.add_aars = ./libs/*.aar
+        # (list) Android AAR archives to add (currently works only with sdl2_gradle
+        # bootstrap)
+        android.add_aars = ./libs/*.aar
 
-Don't forget to include jnius in your list of requirements
+4. Don't forget to include jnius in your list of buildozer requirements
  
-Add the following acitivites to your Android manifest file:
+5. Add the following acitivites to your Android manifest file:
 
         <activity
             android:name="com.unity3d.services.ads.adunit.AdUnitActivity"
@@ -51,12 +51,19 @@ Instantiate the class Unity_handler early on;
 
      unity_ads = kivunity.Unity_handler(app_id)
 
-Early on, initialize Unity ads; 
+Early on, initialize Unity ads, specifying whether it is to be implemebted in testmode or not; 
 
-    unity_ads.init_unity()
+    #for testmode
+    testmode=True
+    unity_ads.init_unity(testmode)
 
-When ready to show the ad; 
+INTERSTITIALS:
 
-    unity_ads.show_ad(inter_id) 
+For interstitials, when ready to show the ad anywhere in your code simply add; 
+
+    unity_ads.show_ad(ad_id) 
 
 
+REWARD ADS:
+
+** In progress **
