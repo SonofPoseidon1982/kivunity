@@ -45,7 +45,7 @@ GENERAL GUIDELINES:
 
 In your main.py, use the following methods;
 
-     Import Kivunity
+     import Kivunity
 
 Instantiate the class Unity_handler early on; 
 
