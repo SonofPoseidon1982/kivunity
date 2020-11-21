@@ -107,7 +107,7 @@ per second:
          
          py_clock.tick(fps)
 
-If you try to use g_pause=True, it will stop display your game graphics but the fps will continue to update
+If you try to use g_pause=True, it will stop displaying your game graphics but the fps will continue to update
 which will conflict with the full screen ad being shown. So the following methods are added to ensure the
 ad is shown without surface conflicts:
 
