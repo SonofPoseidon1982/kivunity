@@ -10,7 +10,7 @@ from kivy.uix.boxlayout import BoxLayout
 
 import logging
 
-testmode = False
+testmode = True
 #inter_id = "12839"
 #app_id = "3786901"
 ad_id = 0
@@ -34,8 +34,10 @@ class Unity_handler():
    def __init__(self, app_id_2):
      self.a_id = app_id_2
    
-   def init_unity(self):
+   def init_unity(self,test_m):
      global app_id
+     global testmode
+     testmode = test_m
      app_id = self.a_id  
      self.new_ad_listener = UnityAdsListener()
      #Unity_ads.addListener(new_ad_listener)
