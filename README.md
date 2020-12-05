@@ -68,6 +68,22 @@ REWARD ADS:
 
 ** In progress **
 
+But basically, the implementation for this is very minimal at the moment. By default the type of ad is interstitial,
+before showing a reward add you request another type of ad.
+
+After you've intitlized Unity ads, you simply use the following methods:
+ 
+      unity_ads.request_type("reward")
+      
+When ready, you simply show the ad:      
+      
+      unity_ads.show(ad_id)
+      
+To check whether the user has view the ad you simply use the 'check_ad_status' method:
+
+      status = unity_ads.check_ad_status
+      if status==True:
+          #This means the user has viewed the reward ad
 
 PYGAME IMPLEMENTATION:
 
