@@ -92,7 +92,7 @@ class UnityAdsListener(PythonJavaClass):
     def onUnityAdsStart(self,inter_id):
        #pass
 #       global app_fin
-       logging.info("\n\n ADS are starting! " + self(inter_id) + "\n\n")
+       logging.info("\n\n ADS are starting! " + str(inter_id) + "\n\n")
 #       app_fin = False
 
     @java_method('(Ljava/lang/String;Lcom/unity3d/ads/UnityAds$FinishState;)V')
